@@ -1,0 +1,35 @@
+Create table countries(
+id_country serial primary key,
+name varchar (60) not null
+);
+
+create table priorities(
+id_priority serial primary key,
+type_name text not null
+);
+
+create table contact_request(
+id_email varchar (60) primary key,
+id_country integer not null,
+id_priority integer not null,
+name varchar (60) not null,
+detail varchar (80) not null,
+physical_address text not null,
+foreign key (id_country) references countries (id_country),
+foreign key (id_priority) references priorities (id_priority)
+);
+
+insert into countries (id_country, name) values (1, 'Venezuela'), (2, 'Colombia'), (3, 'Ecuador'), (4, 'México'), (5, 'Chile');
+select * from countries;
+
+insert into priorities (id_priority, type_name) values (1, 'Alto'), (2, 'Medio'), (3, 'Bajo');
+select * from priorities;
+
+insert into contact_request (id_email, id_country, id_priority, name, detail, physical_address)
+values ('manuela@gmail.com', 1, 1, 'Manuela', 'Gerencia', 'Margarita Golf'),
+('carolina@hotmail.com', 4, 3, 'Carolina', 'Lider de cuenta', 'Condesa'),
+('Carlos@gmail.com', 3, 2, 'Carlos', 'Técnico', 'Quito - casco central');
+select * from contact_request;
+
+ delete from contact_request where id_email='Carlos@gmail.com';
+ update contact_request set id_email='manuela.ramirez@gmail.com' where id_email='manuela@gmail.com';

@@ -1,0 +1,159 @@
+create table countries(
+id_country serial primary key,
+name varchar (60) not null
+);
+
+create table roles(
+id_role serial primary key,
+name varchar (60) not null
+);
+
+create table customers(
+email text primary key,
+id_country integer not null,
+id_role integer not null,
+name varchar (60) not null,
+age integer check (age >= 18) not null,
+password varchar (10) not null,
+physical_address text not null,
+foreign key (id_country) references countries (id_country) on delete cascade,
+foreign key (id_role) references roles (id_role) on delete cascade
+
+);
+
+create table taxes(
+id_tax serial primary key,
+percentage integer not null
+);
+
+create table offer(
+id_offer serial primary key,
+status boolean  not null
+);
+
+
+create table discount(
+id_discount serial primary key,
+status boolean not null,
+percentage integer not null
+);
+
+create table products(
+id_product serial primary key,
+id_discount integer not null,
+id_offer integer not null,
+id_tax integer not null,
+name varchar (100) not null,
+details text not null,
+minimum_stock integer not null,
+maximun_stock integer not null,
+current_stock integer not null,
+price decimal not null,
+price_with_tax decimal not null,
+foreign key  (id_tax) references taxes (id_tax),
+foreign key  (id_offer) references offer (id_offer),
+foreign key  (id_discount) references discount (id_discount)
+);
+
+create table products_costumers(
+id_customer text not null,
+id_product integer not null,
+foreign key (id_customer) references customers (email) on delete cascade,
+foreign key (id_product) references products (id_product)
+);
+
+create table invoice_status(
+id_invoice_status serial primary key,
+status boolean not null
+);
+
+create table payments(
+id_payments serial primary key,
+_type varchar(100) not null
+);
+
+create table invoice(
+id_invoice serial primary key,
+id_customer text not null,
+id_payments integer not null,
+id_invoice_status integer not null,
+_date date not null,
+total_to_pay decimal not null,
+foreign key (id_customer) references customers (email) on delete cascade,
+foreign key (id_payments) references payments (id_payments),
+foreign key (id_invoice_status) references invoice_status (id_invoice_status)
+);
+
+create table orders(
+id_order serial primary key,
+id_invoice integer not null,
+id_product integer not null,
+details text not null,
+amount decimal not null,
+price decimal not null,
+foreign key (id_invoice) references invoice (id_invoice) on delete cascade,
+foreign key (id_product) references products (id_product)
+);
+
+insert into countries (id_country, name) values (1, 'Venezuela'), (2, 'México'), (3, 'Guatemala');
+select * from countries;
+
+insert into roles (id_role, name) values (1, 'Vendedor'), (2, 'Supervisor'), (3, 'Despachador');
+select * from roles;
+
+insert into customers (email, id_country,id_role, name, age, password, physical_address)
+values ('manuela@gmail.com',1, 2, 'Manuela', 23, 'admin123*.', 'Acarigua - Portuguesa'),
+('carlos.perez@gmail.com',2, 1, 'Carlos', 25, '123admin*.', 'Ciudad de México - condesa'),
+('ricarda.ramos@gmail.com',3, 3, 'Ricarda', 32, 'peque354*.', 'Guatemala - ciudad Guatemala');
+select * from customers;
+
+insert into taxes (id_tax, percentage) values (001, 10), (002, 20), (003, 30);
+select * from taxes;
+
+insert into offer (id_offer, status) values (01, true), (02, true), (03, true);
+select * from offer;
+
+insert into discount (id_discount, status, percentage) values (1, true, 10), (2, true, 20), (3, true, 30);
+select * from discount;
+
+insert into products (id_product, id_discount, id_offer, id_tax, name, details, minimum_stock, maximun_stock, current_stock, price, price_with_tax)
+values
+(00001, 1, 1, 1, 'Acite de motor', '20w50-1GL', 20, 120, 70, 14.50, 15.95),
+(00002, 2, 1, 2, 'Acite hidraulico', '70w-1L', 35, 170, 50, 10.25, 11.27),
+(00003, 3, 1, 3, 'Refrigerantes', 'Anticorrosivo-1GL', 30, 150, 80, 13.20, 17.16);
+select * from products;
+
+insert into products_costumers (id_customer, id_product) values ('manuela@gmail.com', 001), ('carlos.perez@gmail.com', 002), ('ricarda.ramos@gmail.com', 003);
+select * from products_costumers;
+
+insert into invoice_status (id_invoice_status, status) values (1, true), (2, false);
+select * from invoice_status;
+
+insert into payments (id_payments, _type) values (1, 'Efectivo'), (2, 'Transferencia'), (3, 'Zelle');
+select * from payments;
+
+insert into invoice (id_invoice, id_customer, id_payments, id_invoice_status, _date, total_to_pay) values
+(00001, 'manuela@gmail.com', 3, 1, '2024/03/30', 15.95),
+(00002, 'carlos.perez@gmail.com', 2, 1, '2024/03/29', 11.27),
+(00003, 'ricarda.ramos@gmail.com', 1, 1, '2024/03/28', 17.16);
+select * from invoice;
+
+
+insert into orders (id_order, id_invoice, id_product, details, amount, price) values
+(0000001, 00001, 000001, '20w50-1GL', 1, 15.95),
+(0000002, 00002, 000002, '70w-1L', 1, 11.27),
+(0000003, 00003, 000003, 'Anticorrosivo-1GL', 1, 17.16);
+select * from  orders;
+
+update taxes set percentage = 15 where percentage = 10; 
+update taxes set percentage = 25 where percentage = 20;
+update taxes set percentage = 35 where percentage = 30; 
+select * from taxes;
+
+update products set price = 15.90 where id_product = 1;
+update products set price = 11.50 where id_product = 2;
+update products set price = 14.40 where id_product = 3;
+select * from products;
+
+delete from customers where email='manuela@gmail.com';
+delete from customers where email='ricarda.ramos@gmail.com';
