@@ -1,48 +1,48 @@
-🖥️🏁 MANUELA RAMÍREZ 🏁🖥️
+                       🖥️🏁 MANUELA RAMÍREZ 🏁🖥️
 
-# DB_Hack1
+                               # DB_Hack1
 
 
-🏁 HACK 1 🏁
+                              🏁 HACK 1 🏁
 
 ![](https://github.com/mcrp02/DB_Hack1/blob/main/Screenshots/Hack-1.png)
 
 
 
-🏁 HACK 2 🏁
+                               🏁 HACK 2 🏁
 
 ![](https://github.com/mcrp02/DB_Hack1/blob/main/Screenshots/Hack-2.png)
 
 
 
-🏁 HACK 3 🏁
+                               🏁 HACK 3 🏁
 
 ![](https://github.com/mcrp02/DB_Hack1/blob/main/Screenshots/Hack-3.png)
 
 
 
-🏁 HACK 4 🏁
+                                🏁 HACK 4 🏁
 
 ![](https://github.com/mcrp02/DB_Hack1/blob/main/Screenshots/Hack-4.png)
 
 
 
-🏁 HACK 5 🏁
+                               🏁 HACK 5 🏁
 
 ![](https://github.com/mcrp02/DB_Hack1/blob/main/Screenshots/Hack-5.png)
 
 
 
-🏁 HACK 6 🏁
+                               🏁 HACK 6 🏁
 
 ![](https://github.com/mcrp02/DB_Hack1/blob/main/Screenshots/Hack-6.png)
 
 
 
-🏅🏅🏅  FINALIZADOS   🏅🏅🏅
+                      🏅🏅🏅  FINALIZADOS   🏅🏅🏅
 
-           🏁🏁🏁
-            MCRP
+                                 🏁🏁🏁
+                                  MCRP
 
 
 
