@@ -5,7 +5,7 @@
 
 🏁 HACK 1 🏁
 
-![] (https://github.com/mcrp02/DB_Hack1/blob/main/Screenshots/Hack-1.png)
+![](https://github.com/mcrp02/DB_Hack1/blob/main/Screenshots/Hack-1.png)
 
 
 
